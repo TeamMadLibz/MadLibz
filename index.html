@@ -3,24 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://www.jsdelivr.com/package/npm/bulma">
     <link rel="stylesheet" href="./assets/style/style.css">
-    <title>Mad Mad Libs!</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+    <title>MadLibz!</title>
 </head>
 <body>
-    <div class="hero is-fullheight is-primary has-background">
-        <img alt="Fill Murray" class="hero-background is-transparent" src="https://www.fillmurray.com/1920/1080" />
-        <div class="hero-body">
-          <div class="container">
-            <h1 class="title">
-              Hero Image
-            </h1>
-            <h3 class="subtitle">
-              without CSS background-image
-            </h3>
-          </div>
+
+    <div class="container">
+        <div class="choose-words-page">
+            <h1 class="choose-words">Choose Words!</h1>
+            <div class="word-type">
+                <ul class="word-blanks"></ul> <!--word type and input rendered here-->
+            </div>
+            <br>
+            <button class="start-btn">MadLibz!</button> <!--start button-->
         </div>
-      </div>
+
+        <div id="hide" class="story-page"> <!--story page hidden until event listener-->
+            <h1 class="title"></h1> <!--title rendered here-->
+            <br>
+            <h2 class="story-text"></h2> <!--story rendered here-->
+            <br>
+        </div>
+
+    </div> <!--container-->
     <script src="./develop/start.js"></script>
 </body>
 </html>

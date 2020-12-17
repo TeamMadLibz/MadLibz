@@ -1,15 +1,66 @@
-.hero.has-background {
-    position: relative;
-    overflow: hidden;
-  }
-  .hero-background {
-    position: absolute;
-    object-fit: cover;
-    object-position: center center;
-    width: 100%;
-    height: 100%;
-  }
-  .hero-background.is-transparent {
-    opacity: 0.3;
-  }
-  
+* {
+  font-family: 'Raleway', sans-serif;;
+  color: white;
+  background-color: black;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  margin: 1.5rem;
+}
+
+.title {
+  font-size: 3rem;
+}
+
+.choose-words {
+  font-size: 3rem;
+  margin-bottom: 2.5rem;
+}
+
+.story-text {
+  font-size: 2rem;
+}
+
+.choose-words-page {
+  margin-top: 3rem;
+}
+
+.word-type {
+  padding: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.start-btn {
+  border-radius: 0.5rem;
+  font-size: 1.5rem;
+  padding: 1rem;
+  border: 2px solid white;
+  margin-left: 0.5rem;
+  width: 35%;
+}
+
+.word-count {
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+
+.user-input {
+  width:35%;
+  border: 2px solid white;
+  border-radius: 4px;
+  font-size: 1.5rem;
+}
+
+#hide {
+  display: none;
+}
+
+#show {
+  display: show;
+}
