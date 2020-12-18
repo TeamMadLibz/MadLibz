@@ -4,7 +4,7 @@ $(document).ready(function renderPage() {
         url: "https://madlibz.herokuapp.com/api/random"
     }).then(function(result) {
         // api data
-        const wordBlanks = result.blanks; 
+        const wordBlanks = result.blanks;
         const storyTitle = result.title;
         const storyText = result.value;
 
