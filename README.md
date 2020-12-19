@@ -1,10 +1,5 @@
 # MadLibz
 
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 7c29393920238354f6031c9ecf6e1c571fb21b41
 ## User Story
 
 ```
@@ -26,9 +21,6 @@ THEN laughs & good times ensue
 **Bonus**
 WHEN I am amused by a particular story
 THEN I have the option to save the story
-<<<<<<< HEAD
-```
-=======
 ```
 
 # Application funcitonality (MVP)
@@ -54,4 +46,3 @@ THEN I have the option to save the story
 9. A clear or start over button should return the user to the homepage. (Should we have a button to pull the previous saved story from local storage on the first page or the last page? or both?)
 
 10. Incorporate agile software development?
->>>>>>> 7c29393920238354f6031c9ecf6e1c571fb21b41
