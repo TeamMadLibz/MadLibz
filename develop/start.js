@@ -13,9 +13,10 @@ $(document).ready(function renderPage() {
             const blankIndex = wordBlanks[i];
             
             // add word type below each input
-            $(".word-blanks").append("<input><li>" + blankIndex + "</li><br>");
-            $("li").attr("class", "word-type");
-            $("input").attr("class", "user-input");
+            $("#wordBlanks").append("<input><li>" + blankIndex + "</li><br>");
+            $("li").attr("class", "wordType");
+            $("input").attr("class", "user-input-field");
+            $("input").attr("id", "userInput");
         };
 
         // user input stored here
@@ -25,11 +26,11 @@ $(document).ready(function renderPage() {
         // render story on click with event listener
         function renderStory(){
             // hide/show start and story
-            $(".choose-words-page").attr("id", "hide");
-            $(".story-page").attr("id", "show");  
+            // $("#choose-words-page").attr("id", "hide");
+            // $("#story-page").attr("id", "show");  
 
             // store user words in array
-            $(".user-input").each(function(){
+            $("#userInput").each(function(){
                 userWords.push($(this).val())
             });
 
@@ -43,13 +44,13 @@ $(document).ready(function renderPage() {
             userStory.toString();
 
             // append title and story
-            $(".title").text(storyTitle);
-            $(".story-text").text(userStory);
+            $("#storyTitle").text(storyTitle);
+            $("#madlibzText").text(userStory);
 
             console.log(userWords);
         };
 
         // event listener
-        $(".start-btn").click(renderStory);
+        $("#startBtn").click(renderStory);
     });
 });
