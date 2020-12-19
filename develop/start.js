@@ -1,4 +1,4 @@
-$(document).ready(function renderPage() {
+(document).ready(function renderPage() {
     // ajax call to madlibz api
     $.ajax( {
         url: "https://madlibz.herokuapp.com/api/random"
@@ -13,9 +13,10 @@ $(document).ready(function renderPage() {
             const blankIndex = wordBlanks[i];
             
             // add word type below each input
-            $(".word-blanks").append("<input><li>" + blankIndex + "</li><br>");
-            $("li").attr("class", "word-type");
-            $("input").attr("class", "user-input");
+            $("#wordBlanks").append("<input><li>" + blankIndex + "</li><br>");
+            $("li").attr("class", "wordType");
+            $("input").attr("class", "user-input-field");
+            $("input").attr("class", "userInput");
         };
 
         // user input stored here
@@ -25,31 +26,39 @@ $(document).ready(function renderPage() {
         // render story on click with event listener
         function renderStory(){
             // hide/show start and story
-            $(".choose-words-page").attr("id", "hide");
-            $(".story-page").attr("id", "show");  
+            // $("#choose-words-page").attr("id", "hide");
+            // $("#story-page").attr("id", "show");  
 
             // store user words in array
-            $(".user-input").each(function(){
-                userWords.push($(this).val())
+            $(".userInput").each(function(){
+                console.log('each user input val: ', $(this).val());
+                const wordToPush = $(this).val();
+                userWords.push(wordToPush);
             });
 
             // map the story array and merge with user input 
             // will need to figure out how to make this part asyncronous due to possible api timing issues once live
-            userStory = storyText.map(function(value, index){
-                return value + userWords[index];
+            const storyP$ = $('<p>');
+            storyText.map(function(phrase, index){
+                const wordSpan$ = $('<span>').text(userWords[index]);
+                if(userWords[index] === ''){  // !userWords[index]
+                    wordSpan$.text('User Input Missing').attr('class', 'missing-input');
+                }
+                storyP$.append(phrase);
+                storyP$.append(wordSpan$);
             });
 
             // change story array to sting
-            userStory.toString();
+           userStory.toString();
 
             // append title and story
-            $(".title").text(storyTitle);
-            $(".story-text").text(userStory);
+            $("#storyTitle").text(storyTitle);
+            $("#madlibzText").append(storyP$);
 
             console.log(userWords);
         };
 
         // event listener
-        $(".start-btn").click(renderStory);
+        $("#startBtn").click(renderStory);
     });
 });
