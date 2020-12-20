@@ -13,8 +13,8 @@ $(document).ready(function renderPage() {
             const blankIndex = wordBlanks[i];
             
             // add word type below each input
-            $("#wordBlanks").append("<input><li>" + blankIndex + "</li><br>");
-            $("li").attr("class", "wordType");
+            $("#wordBlanks").append("<input><p>" + blankIndex + "</p>"); //changed li to p, we can change this later if needed to rearrange the word placement
+            $("p").attr("class", "wordType");
             $("input").attr("class", "userInput");
         };
 
