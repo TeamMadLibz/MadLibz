@@ -1,4 +1,4 @@
-(document).ready(function renderPage() {
+$(document).ready(function renderPage() {
     // ajax call to madlibz api
     $.ajax( {
         url: "https://madlibz.herokuapp.com/api/random"
@@ -16,11 +16,7 @@
             $("#wordBlanks").append("<input><li>" + blankIndex + "</li><br>");
             $("li").attr("class", "wordType");
             $("input").attr("class", "user-input-field");
-<<<<<<< HEAD
             $("input").attr("class", "userInput");
-=======
-            $("input").attr("id", "userInput");
->>>>>>> 296a80ed104ee4c3cd31b5f8cb63cfe0e8bad936
         };
 
         // user input stored here
@@ -34,15 +30,10 @@
             // $("#story-page").attr("id", "show");  
 
             // store user words in array
-<<<<<<< HEAD
             $(".userInput").each(function(){
                 console.log('each user input val: ', $(this).val());
                 const wordToPush = $(this).val();
                 userWords.push(wordToPush);
-=======
-            $("#userInput").each(function(){
-                userWords.push($(this).val())
->>>>>>> 296a80ed104ee4c3cd31b5f8cb63cfe0e8bad936
             });
 
             // map the story array and merge with user input 
@@ -62,11 +53,7 @@
 
             // append title and story
             $("#storyTitle").text(storyTitle);
-<<<<<<< HEAD
             $("#madlibzText").append(storyP$);
-=======
-            $("#madlibzText").text(userStory);
->>>>>>> 296a80ed104ee4c3cd31b5f8cb63cfe0e8bad936
 
             console.log(userWords);
         };
