@@ -15,7 +15,6 @@ $(document).ready(function renderPage() {
             // add word type below each input
             $("#wordBlanks").append("<input><li>" + blankIndex + "</li><br>");
             $("li").attr("class", "wordType");
-            $("input").attr("class", "user-input-field");
             $("input").attr("class", "userInput");
         };
 
