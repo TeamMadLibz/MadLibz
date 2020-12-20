@@ -24,10 +24,6 @@ $(document).ready(function renderPage() {
 
         // render story on click with event listener
         function renderStory(){
-            // hide/show start and story
-            // $("#choose-words-page").attr("id", "hide");
-            // $("#story-page").attr("id", "show");  
-
             // store user words in array
             $(".userInput").each(function(){
                 console.log('each user input val: ', $(this).val());
@@ -40,7 +36,7 @@ $(document).ready(function renderPage() {
             const storyP$ = $('<p>');
             storyText.map(function(phrase, index){
                 const wordSpan$ = $('<span>').text(userWords[index]);
-                if(userWords[index] === ''){  // !userWords[index]
+                if(userWords[index] === ''){  
                     wordSpan$.text('User Input Missing').attr('class', 'missing-input');
                 }
                 storyP$.append(phrase);
@@ -50,14 +46,16 @@ $(document).ready(function renderPage() {
             // change story array to sting
            userStory.toString();
 
+           //added local storage
+           localStorage.setItem(storyTitle, userWords)
             // append title and story
             $("#storyTitle").text(storyTitle);
             $("#madlibzText").append(storyP$);
 
-            console.log(userWords);
         };
 
         // event listener
-        $("#startBtn").click(renderStory);
+        $("#startBtn").click(renderStory)
+
     });
 });
