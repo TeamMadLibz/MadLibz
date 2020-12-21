@@ -13,10 +13,9 @@ $(document).ready(function renderPage() {
             const blankIndex = wordBlanks[i];
             
             // add word type below each input
-            $("#wordBlanks").append("<input><li>" + blankIndex + "</li><br>");
-            $("li").attr("class", "wordType");
-            $("input").attr("class", "user-input-field");
-            $("input").attr("id", "userInput");
+            $("#wordBlanks").append("<input><p>" + blankIndex + "</p>"); //changed li to p, we can change this later if needed to rearrange the word placement
+            $("p").attr("class", "wordType");
+            $("input").attr("class", "userInput");
         };
 
         // user input stored here
@@ -25,32 +24,38 @@ $(document).ready(function renderPage() {
 
         // render story on click with event listener
         function renderStory(){
-            // hide/show start and story
-            // $("#choose-words-page").attr("id", "hide");
-            // $("#story-page").attr("id", "show");  
-
             // store user words in array
-            $("#userInput").each(function(){
-                userWords.push($(this).val())
+            $(".userInput").each(function(){
+                console.log('each user input val: ', $(this).val());
+                const wordToPush = $(this).val();
+                userWords.push(wordToPush);
             });
 
             // map the story array and merge with user input 
             // will need to figure out how to make this part asyncronous due to possible api timing issues once live
-            userStory = storyText.map(function(value, index){
-                return value + userWords[index];
+            const storyP$ = $('<p>');
+            storyText.map(function(phrase, index){
+                const wordSpan$ = $('<span>').text(userWords[index]);
+                if(userWords[index] === ''){  
+                    wordSpan$.text('User Input Missing').attr('class', 'missing-input');
+                }
+                storyP$.append(phrase);
+                storyP$.append(wordSpan$);
             });
 
             // change story array to sting
-            userStory.toString();
+           userStory.toString();
 
+           //added local storage
+           localStorage.setItem(storyTitle, userWords)
             // append title and story
             $("#storyTitle").text(storyTitle);
-            $("#madlibzText").text(userStory);
+            $("#madlibzText").append(storyP$);
 
-            console.log(userWords);
         };
 
         // event listener
-        $("#startBtn").click(renderStory);
+        $("#startBtn").click(renderStory)
+
     });
 });
