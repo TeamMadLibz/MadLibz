@@ -58,4 +58,42 @@ $(document).ready(function renderPage() {
         $("#startBtn").click(renderStory)
 
     });
+
+// Array of possible words for each part of speach
+const adjectives = ['brave', 'strong', 'bright', 'yellow', 'tall', 'ugly', 'painful', 'depressing'];
+
+const nouns = ['table', 'finger', 'pirate', 'chair', 'crown'];
+
+// Function to get Url based on the arrya we pass into it
+function constructUrl(array){
+  const randomNum = Math.floor(Math.random() * array.length - 1) + 1;
+  const randomWord = array[randomNum];
+  const url = `https://www.dictionaryapi.com/api/v3/references/thesaurus/json/${randomWord}?key=3151b7fe-956b-4ad6-93df-1f1961de36c4`;
+  return url;
+}
+
+// Function for ajax call to get synonyms
+function getSynFromAjax(partofSpeech, randomURL) {
+  console.log(randomURL);
+  $.ajax({url: randomURL}).then(function(response){
+    const wordResponse = response.find(function(entry){
+      return entry.fl === partofSpeech
+    });
+    synonymArray = wordResponse.meta.syns[0];
+    const randomNum = Math.floor(Math.random() * synonymArray.length - 1) + 1;
+    console.log(synonymArray[randomNum]);
+  })
+}
+
+// Where event listeners will go
+const randomAdjUrl = constructUrl(adjectives);
+const randomNounUrl = constructUrl(nouns);
+getSynFromAjax('adjective', randomAdjUrl);
+getSynFromAjax('noun', randomNounUrl);
+
+
+
+
+
+// End documentReady
 });
