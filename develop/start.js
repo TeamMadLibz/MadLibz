@@ -18,6 +18,7 @@ $(document).ready(function renderPage() {
             $("input").attr("class", "userInput");
             $("button").attr("class", "randomBtn");
             $(".randomBtn").text("Random!");
+            $(".randomBtn").attr("id", blankIndex);
         };
 
         // user input stored here
