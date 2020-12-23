@@ -17,9 +17,13 @@ $(document).ready(function renderPage() {
             $("p").attr("class", "wordType");
             $("input").attr("class", "userInput");
             $("button").attr("class", "randomBtn");
-            $(".randomBtn").text("Random!");
             $(".randomBtn").attr("id", blankIndex);
+            $(".randomBtn").text("Random!");
+
+            // figure out how to render the start button as well to fix the alignment issues.
+
         };
+
 
         // user input stored here
         let userWords = [];
