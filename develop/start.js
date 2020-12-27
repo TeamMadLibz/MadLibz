@@ -47,6 +47,8 @@ $(document).ready(function renderPage() {
             $(".story-text").text(userStory);
 
             console.log(userWords);
+
+            
         };
 
         // event listener
