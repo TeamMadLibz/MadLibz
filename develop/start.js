@@ -26,6 +26,7 @@ $(document).ready(function renderPage() {
             $('.word-blanks').append(wordTypeField, wordInputField, randomWordBtn);
         };
 
+        // Ray working on the user story portion 
         // user input stored here
         let userWords = [];
         let userStory = [];
@@ -59,13 +60,16 @@ $(document).ready(function renderPage() {
             // append title and story
             $('#storyTitle').text(storyTitle);
             $('#madlibzText').append(storyP$);
-
         };
 
         // event listener
         $('#startBtn').click(renderStory)
-
     });
+
+
+
+
+
 
 // Array of possible words for each part of speach
 const adjectives = ['brave', 'strong', 'bright', 'yellow', 'tall', 'ugly', 'painful', 'depressing'];
