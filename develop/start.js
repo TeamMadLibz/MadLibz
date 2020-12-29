@@ -62,7 +62,7 @@ $(document).ready(function renderPage() {
         };
 
         // event listener
-        $('#story-btn').click(renderStory)
+        $('#story-btn').click(renderStory);
     });
 
 // Array of possible words for each part of speech
