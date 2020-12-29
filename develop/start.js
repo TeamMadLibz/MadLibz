@@ -1,23 +1,29 @@
 $(document).ready(function renderPage() {
     // ajax call to madlibz api
     $.ajax( {
-        url: "https://madlibz.herokuapp.com/api/random"
-    }).then(function(result) {
-        // api data
-        const wordBlanks = result.blanks;
+        url: 'https://madlibz.herokuapp.com/api/random'
+    }).then(function renderUserEntry(result) {
+        // API data
+        const wordTypes = result.blanks;
         const storyTitle = result.title;
         const storyText = result.value;
+        // Start button variable with class and id added.
+        const startBtn = $('<button>').text('MadLibz!').addClass('start-btn').attr('id', 'startBtn');
 
-        // loop to render word inputs
-        for (let i = 0; i < wordBlanks.length; i++) {
-            const blankIndex = wordBlanks[i];
-            
-            // add word type below each input
-            $("#wordBlanks").append("<input><p>" + blankIndex + "</p><button>"); //changed li to p, we can change this later if needed to rearrange the word placement
-            $("p").attr("class", "wordType");
-            $("input").attr("class", "userInput");
-            $("button").attr("class", "randomBtn");
-            $(".randomBtn").text("Random!");
+        // Append start button to start button div line 16.
+        $('#start-btn').append(startBtn);
+
+        // For loop to render word inputs, word type, and random word buttons from the wordTypes array coming from the API.
+        for (let i = 0; i < wordTypes.length; i++) {
+            // Current word type in the array.
+            const blankIndex = wordTypes[i];
+            // Reworked code using variables to create the word type, input fields and random buttons. Classes added to each, we can add more or change these if needed.
+            const wordTypeField = $('<p>').text(blankIndex).addClass('word-type');
+            const wordInputField = $('<input>').addClass('user-input-field userInput');
+            const randomWordBtn = $('<button>').text('Random!').addClass('word-type randomBtn');
+
+            // Append the word type, input and random button on the word-blanks div line 13.
+            $('.word-blanks').append(wordTypeField, wordInputField, randomWordBtn);
         };
 
         // user input stored here
@@ -27,7 +33,7 @@ $(document).ready(function renderPage() {
         // render story on click with event listener
         function renderStory(){
             // store user words in array
-            $(".userInput").each(function(){
+            $('.userInput').each(function(){
                 console.log('each user input val: ', $(this).val());
                 const wordToPush = $(this).val();
                 userWords.push(wordToPush);
@@ -51,14 +57,12 @@ $(document).ready(function renderPage() {
            //added local storage
            localStorage.setItem(storyTitle, userWords)
             // append title and story
-            $("#storyTitle").text(storyTitle);
-            $("#madlibzText").append(storyP$);
-
+            $('#storyTitle').text(storyTitle);
+            $('#madlibzText').append(storyP$);
         };
 
         // event listener
-        $("#startBtn").click(renderStory)
-
+        $('#startBtn').click(renderStory)
     });
 
 // Array of possible words for each part of speech
