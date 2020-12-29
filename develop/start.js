@@ -26,7 +26,6 @@ $(document).ready(function renderPage() {
             $('.word-blanks').append(wordTypeField, wordInputField, randomWordBtn);
         };
 
-        // Ray working on the user story portion 
         // user input stored here
         let userWords = [];
         let userStory = [];
