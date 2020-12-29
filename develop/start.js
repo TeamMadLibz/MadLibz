@@ -7,11 +7,11 @@ $(document).ready(function renderPage() {
         const wordTypes = result.blanks;
         const storyTitle = result.title;
         const storyText = result.value;
-        // Start button variable with class and id added.
-        const startBtn = $('<button>').text('MadLibz!').addClass('start-btn').attr('id', 'startBtn');
+        // Generate story button variable with class and id added.
+        const storyBtn = $('<button>').text('MadLibz!').addClass('btn').attr('id', 'story-btn');
 
         // Append start button to start button div line 16.
-        $('#start-btn').append(startBtn);
+        $('.story-btn').append(storyBtn);
 
         // For loop to render word inputs, word type, and random word buttons from the wordTypes array coming from the API.
         for (let i = 0; i < wordTypes.length; i++) {
@@ -19,8 +19,8 @@ $(document).ready(function renderPage() {
             const blankIndex = wordTypes[i];
             // Reworked code using variables to create the word type, input fields and random buttons. Classes added to each, we can add more or change these if needed.
             const wordTypeField = $('<p>').text(blankIndex).addClass('word-type');
-            const wordInputField = $('<input>').addClass('user-input-field userInput');
-            const randomWordBtn = $('<button>').text('Random!').addClass('word-type randomBtn');
+            const wordInputField = $('<input>').addClass('user-input-field');
+            const randomWordBtn = $('<button>').text('Random!').addClass('btn random-btn');
 
             // Append the word type, input and random button on the word-blanks div line 13.
             $('.word-blanks').append(wordTypeField, wordInputField, randomWordBtn);
@@ -33,7 +33,7 @@ $(document).ready(function renderPage() {
         // render story on click with event listener
         function renderStory(){
             // store user words in array
-            $('.userInput').each(function(){
+            $('.user-input-field').each(function(){
                 console.log('each user input val: ', $(this).val());
                 const wordToPush = $(this).val();
                 userWords.push(wordToPush);
@@ -62,7 +62,7 @@ $(document).ready(function renderPage() {
         };
 
         // event listener
-        $('#startBtn').click(renderStory)
+        $('#story-btn').click(renderStory)
     });
 
 // Array of possible words for each part of speech
