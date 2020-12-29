@@ -55,7 +55,7 @@ $(document).ready(function renderPage() {
            userStory.toString();
 
            //added local storage
-           localStorage.setItem(storyTitle, userWords)
+           localStorage.setItem(storyTitle, JSON.stringify($(storyP$).text()));
             // append title and story
             $('#storyTitle').text(storyTitle);
             $('#madlibzText').append(storyP$);
