@@ -1,7 +1,7 @@
 $(document).ready(function renderPage() {
     // ajax call to madlibz api
     $.ajax( {
-        url: "https://madlibz.herokuapp.com/api/random"
+        url: 'https://madlibz.herokuapp.com/api/random'
     }).then(function(result) {
         // api data
         const wordBlanks = result.blanks;
@@ -13,12 +13,13 @@ $(document).ready(function renderPage() {
             const blankIndex = wordBlanks[i];
             
             // add word type below each input
-            $("#wordBlanks").append("<input><p>" + blankIndex + "</p><button>"); //changed li to p, we can change this later if needed to rearrange the word placement
-            $("p").attr("class", "wordType");
-            $("input").attr("class", "userInput");
-            $("button").attr("class", "randomBtn");
-            $(".randomBtn").attr("id", blankIndex);
-            $(".randomBtn").text("Random!");
+            const wordInputFields = 
+            $('#wordBlanks').append('<input><p>' + blankIndex + '</p><button>'); //changed li to p, we can change this later if needed to rearrange the word placement
+            $('p').attr('class', 'wordType');
+            $('input').attr('class', 'userInput');
+            $('button').attr('class', 'randomBtn');
+            $('.randomBtn').attr('id', blankIndex);
+            $('.randomBtn').text('Random!');
 
             // figure out how to render the start button as well to fix the alignment issues.
 
@@ -32,7 +33,7 @@ $(document).ready(function renderPage() {
         // render story on click with event listener
         function renderStory(){
             // store user words in array
-            $(".userInput").each(function(){
+            $('.userInput').each(function(){
                 console.log('each user input val: ', $(this).val());
                 const wordToPush = $(this).val();
                 userWords.push(wordToPush);
@@ -56,13 +57,13 @@ $(document).ready(function renderPage() {
            //added local storage
            localStorage.setItem(storyTitle, userWords)
             // append title and story
-            $("#storyTitle").text(storyTitle);
-            $("#madlibzText").append(storyP$);
+            $('#storyTitle').text(storyTitle);
+            $('#madlibzText').append(storyP$);
 
         };
 
         // event listener
-        $("#startBtn").click(renderStory)
+        $('#startBtn').click(renderStory)
 
     });
 
