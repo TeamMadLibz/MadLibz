@@ -13,17 +13,27 @@ $(document).ready(function renderPage() {
             const blankIndex = wordBlanks[i];
             
             // add word type below each input
-            const wordInputFields = 
-            $('#wordBlanks').append('<input><p>' + blankIndex + '</p><button>'); //changed li to p, we can change this later if needed to rearrange the word placement
-            $('p').attr('class', 'wordType');
-            $('input').attr('class', 'userInput');
+            // Reworked code to render the input fields seprately for the start button and added classes.
+            const wordInputField = $('<input>').addClass('user-input-field userInput');
+            const wordTypeField = $('<p>').text(blankIndex).addClass('word-type-field wordType');
+            const randomWordBtn = $('<button>').text('Random!').addClass('word-type');
+
+            console.log(blankIndex)
+
+            $('#wordBlanks').append(wordTypeField, wordInputField, randomWordBtn); //('<input><p>' + blankIndex + '</p><button>');
+            //$('p').attr('class', 'wordType');
+            //$('input').attr('class', 'userInput');
             $('button').attr('class', 'randomBtn');
             $('.randomBtn').attr('id', blankIndex);
             $('.randomBtn').text('Random!');
 
             // figure out how to render the start button as well to fix the alignment issues.
-
         };
+        // append start button here
+
+
+
+
 
 
         // user input stored here
