@@ -65,15 +65,27 @@ $(document).ready(function renderPage() {
         $('#startBtn').click(renderStory)
     });
 
+// Array of possible words for each part of speech
+const adjectives = ['brave', 'strong', 'bright', 'yellow', 'tall', 'ugly', 'painful', 'depressing', "aggressive", "agreeable", "calm", "delightful", "ambitious", "faithful", "eager", "elegant", "drab", "gentle", "happy", "lazy", "jealous", "mysterious", "gorgeous", "handsome", "magnificent", "plump", "thin", "thick", "unkempt", "jolly", "kind", "fierce", "grumpy", "embarassed", "small", "gigantic", "angry", "silly", "victorious", "polite", "scary", "fun"];
 
+const nouns = ['table', 'finger', 'pirate', 'chair', 'crown', 'man', 'mountain', 'building', 'country', 'airline', 'house', 'ocean', 'speaker', 'clock', 'pen', 'eyes', 'light', 'sun', 'suitcase', 'flowers', 'bed', 'movie', 'train', 'song', 'milk', 'rice', 'tablecloth', 'water', 'food', 'rain', 'sock', 'ship', 'hero', 'baby', 'people', 'history', 'software', 'problem', 'community', 'safety', 'thought', 'boyfriend', 'girlfriend', 'friend', 'army', 'camera', 'week', 'month', 'player', 'technology', 'news', 'department', 'audience'];
 
+const adverbs = ['lovely', 'boldy', 'cheerfully', 'deftly', 'courageously', 'fortunately', 'gracefully', 'gently', 'gleefully', 'honestly', 'devotedly', 'powerfully', 'justly', 'perfectly', 'politely', 'anxiously', 'badly', 'boastfully', 'poorly', 'obnoxiously', 'selfishly', 'warily', 'rudely', 'foolishly', 'hopelessly', 'always', 'eventually', 'rarely', 'seldom', 'usually', 'frequently', 'finally', 'never', 'sometimes', 'quickly', 'tediously', 'accidentally', 'crazily', 'dutifully', 'doubtfully', 'morally', 'madly', 'awkwardly', 'defiantly', 'deliberately', 'doubtfully', 'sharply', 'seriously', 'silently', 'technically', 'shakily'];
 
+const partOfBody = ['abdomen', 'adrenal gland', 'anus', 'arm', 'Adam\'s apple', 'appendix', 'artery', 'ankle', 'back', 'belly button', 'big toe', 'buttocks', 'brain', 'belly', 'bladder', 'body', 'breast', 'calf', 'cheek', 'chest', 'clavicle', 'chin', 'coccyx', 'diaphragm', 'ear', 'eyebrow', 'earlobe', 'elbow', 'eye', 'face', 'femur', 'finger', 'foot', 'fingernail', 'forehead', 'feet', 'groin', 'gums', 'hair', 'heart', 'hand', 'heel', 'head', 'hip', 'iris', 'kidney', 'knee', 'lip', 'leg', 'liver', 'lungs', 'mouth', 'muscle', 'nail', 'nostril', 'navel', 'nipple', 'neck', 'nose', 'palm', 'pupil', 'pinky', 'rectum', 'ribs', 'sacrum', 'skull', 'spinal cord', 'sternum', 'scalp', 'shin', 'skeleton', 'sole', 'spine', 'stomach', 'shoulder', 'skin', 'spleen', 'throat', 'toenail', 'tooth', 'teeth', 'thigh', 'tongue', 'toe', 'uvula', 'vein', 'waist', 'wrist'];
 
+const verbs = ["run", "kick", "travel", "dance", "walk", "paint", "write", "code", "draw", "smuggle", "steal", "kidnap", "think", "drool", "fight", "shoot", "yodle", "sing", "tickle", "create", "bounce", "jump", "seduce", "fly", "bamboozle", "trick", "mop", "wash", "flop", "talk", "splash", "mash"];
 
-// Array of possible words for each part of speach
-const adjectives = ['brave', 'strong', 'bright', 'yellow', 'tall', 'ugly', 'painful', 'depressing'];
+const foreignCountry = ["Ireland", "North Korea", "Nicaragua", "Argentina", "South Africa", "India", "Costa Rica", "Mexico", "Australia", "United Arab Emirates", "Thailand", "Somalia", "France", "Russia", "Norway", "Iceland", "China", "United Kingdom", "Canada", "Iran", "Palestine", "Estonia", "Slovenia", "Netherlands", "Belarus", "New Zeland", "Fiji", "Jamacia", "Cuba"];
 
-const nouns = ['table', 'finger', 'pirate', 'chair', 'crown'];
+const animals = ['kangaroo', 'wallaby', 'leopard', 'crocodile', 'alligator', 'swan', 'duck', 'tasmanian devil', 'hawk', 'eagle', 'falcon', 'lion', 'jackal', 'hyena', 'gecko', 'iguana', 'turtle', 'tortoise', 'tiger', 'panther', 'jaguar', 
+'cardinal', 'giraffe', 'elephant', 'hippo', 'emu', 'ostrich', 'bull', 'cow', 'ox', 'rhino', 'water buffalo', 'bison', 'dog', 'cat', 'lizard', 'hamster', 'rabbit', 'gerbil', 'racoon', 'jellyfish', 'salmon', 'manta ray', 'tuna', 'dolphin', 'great white shark', 'tiger shark', 'moray eel', 'walrus', 'sea lion', 'seal', 'condor', 'pelican', 'warthog', 'mongoose', 'cobra', 'salamander', 'deer', 'elk', 'moose', 'caribou', 'reindeer', 'bear', 'wolf', 'fox', 'coyote', 'gorilla', 'chimpanzee', 'orangutan', 'bonobo', 'baboon', 'lemur', 'zebra', 'gazelle', 'cougar', 'puma', 'frog', 'toad', 'tarantula', 'black widow', 'brown recluse', 'crab', 'lobster', 'shrimp', 'stingray', 'blue whale', 'orca', 'anaconda', 'python'];
+
+const places = ['Dubai', 'Rishikesh', 'Nosara', 'jungle', 'here', 'there', 'everywhere', 'nowhere', 'your house', 'the garden', 'the park', 'backyard', 'church', 'temple', 'Hogwarts', 'Maine', 'New Castle', 'Amsterdam', 'the cabin', 'the woods', 'heaven', 'outer space', 'inner space', 'Detroit', 'Cancun', 'Neverland', 'colosseum', 'Rome', 'Mount Ida', 'Mount Hood', 'thrift store', 'bookshop', 'drycleaner', 'coffee shop', 'bar', 'deli', 'convenience store', 'gas station', 'grocery store', 'laboratory', 'hair salon', 'hardware store', 'florist', 'bank', 'music store', 'office', 'restaurant', 'lobby', 'room', 'kitchen'];
+
+const typesOfLiquids = ['water', 'soda', 'pop', 'soda pop', 'juice', 'alcohol', 'tea', 'coffee', 'milk', 'soymilk', 'liquid nitrogen', 'wine', 'cider', 'hard cider', 'beer', 'whisky', 'rum', 'gin', 'bourbon', 'vodka', 'almond milk', 'apple juice', 'orange juice', 'bleach', 'soap', 'hand sanitizer', 'coke', 'sprite', 'smoothie', 'milkshake', 'hot chocolate'];
+
+const ingVerbs = ["sleeping", "indoctrinating", "mapping", "pacing", "boxing", "racing", "smashing", "chasing", "crying", "laughing", "dropping", "working", "twerking", "swimming", "diving", "drowning", "skate-boarding", "snow-boarding", "thrashing", "liking", "biking", "hiking", "looking", "finding", "dining", "driving", "trying", "typing", "puking", "joking", "choking", "seeing", "being", "hating", "making", "taking", "faking", "shaking", "smirking", "jerking", "lurking", "staring", "sharing", "caring", "daring", ];
 
 // Function to get Url based on the arrya we pass into it
 function constructUrl(array){
@@ -95,6 +107,7 @@ function getSynFromAjax(partofSpeech, randomURL) {
     console.log(synonymArray[randomNum]);
   })
 }
+
 
 // Where event listeners will go
 const randomAdjUrl = constructUrl(adjectives);
