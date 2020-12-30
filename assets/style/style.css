@@ -13,3 +13,6 @@
   opacity: 0.3;
 }
 
+.missing-input {
+  color: red;
+}

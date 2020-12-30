@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./assets/style/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="./develop/start.js"></script>
 
     <!---jQuery link-->
     
@@ -18,35 +19,30 @@
 </head>
 
 <body>
-
-    <div class="container">
-        <div id="chooseWordsPage">
-            <h1 id="chooseWordsTitle">Choose Words!</h1>
-            <div id="wordType">
-                <ul id="wordBlanks"></ul>
-                <!--word type and input rendered here-->
-            </div>
-            <br>
-            <div>id="startBtn"></div>
+    <section class="hero is-fullheight is-danger has-background">
+        <!---Background Image-->
+        <img alt="Mad Libs Logo" class="hero-background is-transparent" src="https://www.perkinselearning.org/sites/elearning.perkinsdev1.org/files/Mad_Libs_logo.png" />
+        <!---Hero Header w/ Navbar-->
+        <div class="hero-head has-text-centered is-bold">
+        <!---Enter header text here-->
+            <h1 class="title">Welcome to your Mad Libs!</h1>
         </div>
 
-        <div id="storyPage">
-            <h1 id="storyTitle"></h1>
-            <!--title rendered here-->
-            <br>
-            <h2 id="madlibzText"></h2>
-            <!--story rendered here-->
-            <br>
+        <div class="hero-body">
+          <div class="container has-text-centered">
+            <section>
+                <a href="userInput.html" class="button">Let's Play</a>
+                <br>
+                <a href="story.html" class="button">Veiw Previous Stories!</a>
+            </section>
+            
+          </div>
         </div>
-
-    </div>
-    <!--container-->
-    <script src="./develop/start.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-
-
+        <!---Enter footer text here-->
+        <div class="hero-foot">
+            
+        </div>
+    </section>
 
 </body>
 
