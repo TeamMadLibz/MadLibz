@@ -34,6 +34,10 @@ $(document).ready(function renderPage() {
 
         // render story on click with event listener
         function renderStory(){
+          // Clears title and input fields
+          $('.word-choice-title').hide()
+          $('.word-blanks').hide();
+          $('.story-btn').hide();
             // store user words in array
             $('.user-input-field').each(function(){
                 console.log('each user input val: ', $(this).val());
