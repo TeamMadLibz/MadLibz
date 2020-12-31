@@ -22,10 +22,24 @@ $(document).ready(function renderPage() {
             // Reworked code using variables to create the word type, input fields and random buttons. Classes added to each, we can add more or change these if needed.
             const wordTypeField = $('<p>').text(blankIndex).addClass('word-type');
             const wordInputField = $('<input>').addClass('user-input-field');
-            const randomWordBtn = $('<button>').text('Random!').addClass('btn random-btn');
-
+            let randomWordBtn = $('<button>').text('Random!').addClass('btn random-btn'); // Added the word type as an id to recall for the random word button.
             // Append the word type, input and random button on the word-blanks div line 13.
             $('.word-blanks').append(wordTypeField, wordInputField, randomWordBtn);
+        };
+
+        // Click event to generate a random word.
+        $('.random-btn').click(randomWordBtn);
+        
+        function randomWordBtn(){
+            // This will get the value from the wordTypeField.
+            const randomWordType = $(this).next('.word-type').html();
+            // This variable can then be passed into the function to generate the random word as an arugment as below or we can just add the random word fuctionality here instead of at the bottom.
+            randomWordFunction(randomWordType);
+        }; // randomWordBtn()
+
+        // Test function to for random button click event. 
+        function randomWordFunction(wordTypeToGenerate) {
+            console.log(wordTypeToGenerate);
         };
 
         // user input stored here
