@@ -1,6 +1,6 @@
 $(document).ready(function renderPage() {
 
-  // Array of possible words for each part of speech
+  // Arrays of possible words for each part of speech/input
 const adjectives = ['brave', 'strong', 'bright', 'yellow', 'tall', 'ugly', 'painful', 'depressing', "aggressive", "agreeable", "calm", "delightful", "ambitious", "faithful", "eager", "elegant", "drab", "gentle", "happy", "lazy", "jealous", "mysterious", "gorgeous", "handsome", "magnificent", "plump", "thin", "thick", "unkempt", "jolly", "kind", "fierce", "grumpy", "embarassed", "small", "gigantic", "angry", "silly", "victorious", "polite", "scary", "fun"];
 
 const nouns = ['table', 'finger', 'pirate', 'chair', 'crown', 'man', 'mountain', 'building', 'country', 'airline', 'house', 'ocean', 'speaker', 'clock', 'pen', 'eyes', 'light', 'sun', 'suitcase', 'flowers', 'bed', 'movie', 'train', 'song', 'milk', 'rice', 'tablecloth', 'water', 'food', 'rain', 'sock', 'ship', 'hero', 'baby', 'people', 'history', 'software', 'problem', 'community', 'safety', 'thought', 'boyfriend', 'girlfriend', 'friend', 'army', 'camera', 'week', 'month', 'player', 'technology', 'news', 'department', 'audience'];
@@ -22,10 +22,24 @@ const typesOfLiquids = ['water', 'soda', 'pop', 'soda pop', 'juice', 'alcohol', 
 
 const ingVerbs = ["sleeping", "indoctrinating", "mapping", "pacing", "boxing", "racing", "smashing", "chasing", "crying", "laughing", "dropping", "working", "twerking", "swimming", "diving", "drowning", "skate-boarding", "snow-boarding", "thrashing", "liking", "biking", "hiking", "looking", "finding", "dining", "driving", "trying", "typing", "puking", "joking", "choking", "seeing", "being", "hating", "making", "taking", "faking", "shaking", "smirking", "jerking", "lurking", "staring", "sharing", "caring", "daring", ];
 
+const clothing = ['kimono', 'robe', 'jeans', 'shirt', 't-shirt', 'dress shirt', 'dress', 'skirt', 'mini-skirt', 'pants', 'shorts', 'jacket', 'sweater', 'hoodie', 'parka', 'vest', 'capris', 'sun-dress', 'button-up shirt', 'button-down shirt', 'socks', 'shoes', 'boots', 'sandals', 'flip-flops', 'heels', 'wedges', 'slippers', 'flippers', 'bikini', 'swimsuit', 'tank-top', 'crop-top', 'goggles', 'watch', 'belt', 'smart-watch', 'gloves', 'scarf', 'bracelet', 'suit', 'gown', 'tuxedo', 'bullet-proof vest', 'armor', 'body-armor', 'gauntlet', 'helmet', 'hat', 'baseball hat', 'sombrero', 'cap', 'beanie', 'fedora'];
+
+// Contruct Urls for all array types
 const randomAdjUrl = constructUrl(adjectives);
 const randomNounUrl = constructUrl(nouns);
-getSynFromAjax('adjective', randomAdjUrl);
-getSynFromAjax('noun', randomNounUrl);
+const randomAdvUrl = constructUrl(adverbs);
+const randomPobUrl = constructUrl(partOfBody);
+const randomVerbUrl = constructUrl(verbs);
+const randomForeignCountryUrl = constructUrl(foreignCountry);
+const randomAnimalUrl = constructUrl(animals);
+const randomPlacesUrl = constructUrl(places);
+const randomTypeOfLiquidUrl = constructUrl(typesOfLiquids);
+const randomIngVerbUrl = constructUrl(ingVerbs);
+const randomClothingUrl = constructUrl(clothing);
+
+
+// var adj = getSynFromAjax('adjective', randomAdjUrl);
+// var noun = getSynFromAjax('noun', randomNounUrl);
 
 
     // ajax call to madlibz api
@@ -71,12 +85,14 @@ getSynFromAjax('noun', randomNounUrl);
             const randomWordType = $(this).next('.word-type').html();
             // This variable can then be passed into the function to generate the random word as an arugment as below or we can just add the random word fuctionality here instead of at the bottom.
             randomWordFunction(randomWordType);
-        }; // randomWordBtn()
+        // End randomWordBtn()
+        };
 
-        // Test function to for random button click event. 
+        // Function to generate a random word to populate the text box 
         function randomWordFunction(wordTypeToGenerate) {
             console.log(wordTypeToGenerate);
-            getSynFromAjax(wordTypeToGenerate, randomAdjUrl);
+            let randomWord = getSynFromAjax(wordTypeToGenerate, randomAdjUrl);
+            // $(this).next('.user-input-field').text(randomWord);
         };
 
         // user input stored here
@@ -146,6 +162,7 @@ function getSynFromAjax(partofSpeech, randomURL) {
     synonymArray = wordResponse.meta.syns[0];
     const randomNum = Math.floor(Math.random() * synonymArray.length - 1) + 1;
     console.log(synonymArray[randomNum]);
+    return synonymArray[randomNum];
   })
 }
 
