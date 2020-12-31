@@ -45,7 +45,7 @@ $(document).ready(function renderPage() {
             storyText.map(function(phrase, index){
                 const wordSpan$ = $('<span>').text(userWords[index]);
                 if(userWords[index] === ''){  
-                    wordSpan$.text('User Input Missing').attr('class', 'missing-input');
+                    wordSpan$.text('Whoops!').attr('class', 'missing-input');
                 }
                 storyP$.append(phrase);
                 storyP$.append(wordSpan$);
