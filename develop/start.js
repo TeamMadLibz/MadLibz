@@ -1,7 +1,7 @@
 $(document).ready(function renderPage() {
     // ajax call to madlibz api
     $.ajax( {
-        url: 'https://madlibz.herokuapp.com/api/random'
+        url: 'https://madlibz.herokuapp.com/api/random?minlength=2'
     }).then(function renderUserEntry(result) {
         // API data
         const wordTypes = result.blanks;
