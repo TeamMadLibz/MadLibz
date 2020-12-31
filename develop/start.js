@@ -23,9 +23,15 @@ $(document).ready(function renderPage() {
             // Current word type in the array.
             const blankIndex = wordTypes[i];
             // Reworked code using variables to create the word type, input fields and random buttons. Classes added to each, we can add more or change these if needed.
+
             const wordTypeField = $('<p>').text('Choose a(n) ' + blankIndex).addClass('word-type has-text-weight bold is-uppercase m-2');
             const wordInputField = $('<input>').addClass('user-input-field input  is-rounded');
             let randomWordBtn = $('<button>').text('Random!').addClass('button m-4 is-rounded btn random-btn'); // Added the word type as an id to recall for the random word button.
+
+            const wordTypeField = $('<p>').text(blankIndex).addClass('word-type');
+            const wordInputField = $('<input>').addClass('user-input-field');
+            let randomWordBtn = $('<button>').text('Random!').addClass('btn random-btn').attr('value', blankIndex); // Added the word type as a value to recall for each random word button.
+
             // Append the word type, input and random button on the word-blanks div line 13.
             $('.word-blanks').append(wordTypeField, wordInputField, randomWordBtn);
         };
@@ -35,7 +41,7 @@ $(document).ready(function renderPage() {
         
         function randomWordBtn(){
             // This will get the value from the wordTypeField.
-            const randomWordType = $(this).next('.word-type').html();
+            const randomWordType = $(this).attr('value');
             // This variable can then be passed into the function to generate the random word as an arugment as below or we can just add the random word fuctionality here instead of at the bottom.
             randomWordFunction(randomWordType);
         }; // randomWordBtn()
