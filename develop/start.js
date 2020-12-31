@@ -7,6 +7,8 @@ $(document).ready(function renderPage() {
         const wordTypes = result.blanks;
         const storyTitle = result.title;
         const storyText = result.value;
+        let lastPosition = result.value.length -1;
+        let updateStory = storyText.splice (lastPosition, 1);
         // Generate story button variable with class and id added.
         const storyBtn = $('<button>').text('MadLibz!').addClass('btn').attr('id', 'story-btn');
 
