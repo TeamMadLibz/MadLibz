@@ -7,10 +7,13 @@ $(document).ready(function renderPage() {
         const wordTypes = result.blanks;
         const storyTitle = result.title;
         const storyText = result.value;
+
+        // Remove the last item in the storyText array
         let lastPosition = result.value.length -1;
         let updateStory = storyText.splice (lastPosition, 1);
+
         // Generate story button variable with class and id added.
-        const storyBtn = $('<button>').text('MadLibz!').addClass('btn').attr('id', 'story-btn');
+        const storyBtn = $('<button>').text('Generate your story!').addClass('btn button is-rounded').attr('id', 'story-btn');
 
         // Append start button to start button div line 16.
         $('.story-btn').append(storyBtn);
@@ -20,9 +23,9 @@ $(document).ready(function renderPage() {
             // Current word type in the array.
             const blankIndex = wordTypes[i];
             // Reworked code using variables to create the word type, input fields and random buttons. Classes added to each, we can add more or change these if needed.
-            const wordTypeField = $('<p>').text(blankIndex).addClass('word-type');
-            const wordInputField = $('<input>').addClass('user-input-field');
-            let randomWordBtn = $('<button>').text('Random!').addClass('btn random-btn'); // Added the word type as an id to recall for the random word button.
+            const wordTypeField = $('<p>').text('Choose a(n) ' + blankIndex).addClass('word-type has-text-weight bold is-uppercase m-2');
+            const wordInputField = $('<input>').addClass('user-input-field input  is-rounded');
+            let randomWordBtn = $('<button>').text('Random!').addClass('button m-4 is-rounded btn random-btn'); // Added the word type as an id to recall for the random word button.
             // Append the word type, input and random button on the word-blanks div line 13.
             $('.word-blanks').append(wordTypeField, wordInputField, randomWordBtn);
         };
