@@ -33,13 +33,13 @@ $(document).ready(function renderPage() {
         function randomWordBtn(){
             // This will get the value from the wordTypeField.
             const randomWordType = $(this).next('.word-type').html();
-            // This variable can then be passed into the function to generate the random word as an arugment.
+            // This variable can then be passed into the function to generate the random word as an arugment as below or we can just add the random word fuctionality here instead of at the bottom.
             randomWordFunction(randomWordType);
         }; // randomWordBtn()
 
-        // Test function to for random button click event.
-        function randomWordFunction(word) {
-            console.log(word);
+        // Test function to for random button click event. 
+        function randomWordFunction(wordTypeToGenerate) {
+            console.log(wordTypeToGenerate);
         };
 
         // user input stored here
