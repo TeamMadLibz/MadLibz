@@ -101,6 +101,8 @@ const randomClothingUrl = constructUrl(clothing);
 
         // render story on click with event listener
         function renderStory(){
+          // Add new class to container
+          $('.container').addClass("blankPage");
           // Clears title and input fields
           $('.word-choice-title').hide()
           $('.word-blanks').hide();
@@ -130,7 +132,7 @@ const randomClothingUrl = constructUrl(clothing);
            //added local storage
            localStorage.setItem(storyTitle, JSON.stringify($(storyP$).text()));
             // append title and story
-            $('#storyTitle').text(storyTitle);
+            $('#storyTitle').text(" " + storyTitle);
             $('#madlibzText').append(storyP$);
         };
 
