@@ -132,7 +132,7 @@ const randomClothingUrl = constructUrl(clothing);
            //added local storage
            localStorage.setItem(storyTitle, JSON.stringify($(storyP$).text()));
             // append title and story
-            $('#storyTitle').text(" " + storyTitle);
+            $('#storyTitle').text(storyTitle);
             $('#madlibzText').append(storyP$);
         };
 
