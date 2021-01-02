@@ -24,12 +24,24 @@
 
 .blankPage {
   background-image: url("https://st4.depositphotos.com/17553142/22142/v/1600/depositphotos_221420278-stock-illustration-blank-notebook-page-sheet-lined.jpg");
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  width: auto;
-  height: auto;
+  width: 100%;
+  height: 100%;
   font-family: 'Delius Unicase', cursive;
   font-family: 'Gaegu', cursive;
   font-size: x-large;
   color: black;
+}
+
+.blankPage p {
+  margin-left: 12rem;
+  margin-right: 3rem;
+  margin-bottom: 1rem;
+}
+
+.blankPage h1 {
+  margin-left: 10rem;
+  margin-top: -1rem
 }
