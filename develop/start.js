@@ -155,17 +155,18 @@ function constructUrl(array){
 }
 
 // Function for ajax call to get synonyms
-function getSynFromAjax(partofSpeech, randomURL) {
+async function getSynFromAjax(partofSpeech, randomURL) {
   console.log(randomURL);
   $.ajax({url: randomURL}).then(function(response){
     const wordResponse = response.find(function(entry){
       return entry.fl === partofSpeech
     });
-    synonymArray = wordResponse.meta.syns[0];
+    let synonymArray = wordResponse.meta.syns[0];
     const randomNum = Math.floor(Math.random() * synonymArray.length - 1) + 1;
-    console.log(synonymArray[randomNum]);
-    return synonymArray[randomNum];
-  })
+    var result = synonymArray[randomNum];
+    console.log(result);
+    return result;
+  });
 }
 
 
