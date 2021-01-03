@@ -24,6 +24,10 @@ const ingVerbs = ["sleeping", "indoctrinating", "mapping", "pacing", "boxing", "
 
 const clothing = ['kimono', 'robe', 'jeans', 'shirt', 't-shirt', 'dress shirt', 'dress', 'skirt', 'mini-skirt', 'pants', 'shorts', 'jacket', 'sweater', 'hoodie', 'parka', 'vest', 'capris', 'sun-dress', 'button-up shirt', 'button-down shirt', 'socks', 'shoes', 'boots', 'sandals', 'flip-flops', 'heels', 'wedges', 'slippers', 'flippers', 'bikini', 'swimsuit', 'tank-top', 'crop-top', 'goggles', 'watch', 'belt', 'smart-watch', 'gloves', 'scarf', 'bracelet', 'suit', 'gown', 'tuxedo', 'bullet-proof vest', 'armor', 'body-armor', 'gauntlet', 'helmet', 'hat', 'baseball hat', 'sombrero', 'cap', 'beanie', 'fedora'];
 
+const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+
+const names = ['Jayme', 'Jamie', 'Eric', 'Erik', 'Ray', 'Rai', 'Shawn', 'Sean', 'Alex', 'Aiden', 'Amy', 'Betty', 'Bobby', 'Beatrice', 'Charles', 'Cathy', 'Chris', 'Christine', 'Caleb', 'David', 'Danielle', 'Dakota', 'Edward', 'Edith', 'Elijah', 'Emma', 'Frank', 'Frances', 'Freya', 'George', 'Greg', 'Gabby', 'Henry', 'Haley', 'Hannah', 'Indiana', 'Isabel', 'Iris', 'Isaac', 'Jacob', 'Jake', 'James', 'Jess', 'Jaden', 'Kaden', 'Kane', 'Kayla', 'Ky', 'Leo', 'Lily', 'Lara', 'Maryus', 'Mabel', 'Mark', 'Mary', 'Matthew', 'Madelyn', 'Noah', 'Nathan', 'Nancy', 'Odin', 'Orlando', 'Orion', 'Oscar', 'Paul', 'Paula', 'Paige', 'Parker', 'Quentin', 'Quinn', 'Quincy', 'Rachel', 'Rae', 'Riley', 'Ryan', 'Sophia', 'Scarlett', 'Sam', 'Stella', 'Tyler', 'Theo', 'Thor', 'Toni', 'Tony', 'Trevor', 'Ulema', 'Ulga', 'Uda', 'Uma', 'Viktoria', 'Victor', 'Val', 'Valerie', 'William', 'Will', 'Weston', 'Wade', 'Walker', 'Xavier', 'Xavi', 'Yana', 'Yadira', 'Yvonne', 'Yvette', 'Zach', 'Zara', 'Zakiya'];
+
 // Contruct Urls for all array types
 const randomAdjUrl = constructUrl(adjectives);
 const randomNounUrl = constructUrl(nouns);
@@ -36,7 +40,8 @@ const randomPlacesUrl = constructUrl(places);
 const randomTypeOfLiquidUrl = constructUrl(typesOfLiquids);
 const randomIngVerbUrl = constructUrl(ingVerbs);
 const randomClothingUrl = constructUrl(clothing);
-
+const randomNumberUrl = constructUrl(numbers);
+const randomNameUrl = constructUrl(names);
 
 // var adj = getSynFromAjax('adjective', randomAdjUrl);
 // var noun = getSynFromAjax('noun', randomNounUrl);
