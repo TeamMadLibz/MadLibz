@@ -135,7 +135,8 @@ const randomNameUrl = constructUrl(names);
            userStory.toString();
 
            //added local storage
-           localStorage.setItem(storyTitle, JSON.stringify($(storyP$).text()));
+           localStorage.setItem('madlibz-title', storyTitle);
+           localStorage.setItem('madlibz-story', JSON.stringify($(storyP$).text()));
             // append title and story
             $('#storyTitle').text(storyTitle);
             $('#madlibzText').append(storyP$);
