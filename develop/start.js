@@ -125,6 +125,7 @@ const randomNameUrl = constructUrl(names);
             const storyP$ = $('<p>');
             const saveStoryBtn = $('<button>').attr('id','save-story').text('Save Story');
             const homeBtn = $('<button>').attr('id','home-btn').text('Home');
+            homeBtn.attr('onclick', "window.location.href='./index.html'");
             storyText.map(function(phrase, index){
                 const wordSpan$ = $('<span>').text(userWords[index]);
                 if(userWords[index] === ''){  
@@ -147,7 +148,7 @@ const randomNameUrl = constructUrl(names);
             $('#madlibzText').append(storyP$);
         };
 
-        // event listener
+        // Event listeners
         $('#story-btn').click(renderStory);
         $('#save-story').click(retrieveStory);
       // End ajax call
@@ -166,6 +167,7 @@ const randomNameUrl = constructUrl(names);
       $('.hero-body').append(story);
     }
 
+    
 
   
 
