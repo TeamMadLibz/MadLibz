@@ -147,13 +147,13 @@ const randomNameUrl = constructUrl(names);
 
         // event listener
         $('#story-btn').click(renderStory);
+        $('#save-story').click(retrieveStory);
       // End ajax call
     });
 
-    $('#save-story').click(retrieveStory);
     function retrieveStory () {
       console.log('hi');
-      // location.assign('./story.html');
+      location.assign('./story.html');
       let getTitle = localStorage.getItem('madlibz-title');
       console.log(getTitle);
       let getStory = localStorage.getItem('madlibz-story');
