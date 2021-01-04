@@ -124,6 +124,7 @@ const randomNameUrl = constructUrl(names);
             // will need to figure out how to make this part asyncronous due to possible api timing issues once live
             const storyP$ = $('<p>');
             const saveStoryBtn = $('<button>').attr('id','save-story').text('Save Story');
+            const homeBtn = $('<button>').attr('id','home-btn').text('Home');
             storyText.map(function(phrase, index){
                 const wordSpan$ = $('<span>').text(userWords[index]);
                 if(userWords[index] === ''){  
@@ -132,6 +133,7 @@ const randomNameUrl = constructUrl(names);
                 storyP$.append(phrase);
                 storyP$.append(wordSpan$);
                 storyP$.append(saveStoryBtn);
+                storyP$.append(homeBtn);
             });
 
             // change story array to sting
