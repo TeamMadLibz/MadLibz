@@ -160,8 +160,8 @@ const randomNameUrl = constructUrl(names);
       let storyTitle = $('<h2>').text(getStory);
       let story = $('<p>').text(getStory);
 
-      $('hero-body').append(storyTitle);
-      $('hero-body').append(story);
+      $('.hero-body').append(storyTitle);
+      $('.hero-body').append(story);
     }
 
 
