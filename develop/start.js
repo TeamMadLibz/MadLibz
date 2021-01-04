@@ -124,6 +124,7 @@ const randomNameUrl = constructUrl(names);
             // will need to figure out how to make this part asyncronous due to possible api timing issues once live
             const storyP$ = $('<p>');
             const saveStoryBtn = $('<button>').attr('id','save-story').text('Save Story');
+            saveStoryBtn.attr('onclick', "window.location.href='./story.html'");
             const homeBtn = $('<button>').attr('id','home-btn').text('Home');
             homeBtn.attr('onclick', "window.location.href='./index.html'");
             storyText.map(function(phrase, index){
@@ -156,7 +157,6 @@ const randomNameUrl = constructUrl(names);
 
     function retrieveStory () {
       console.log('hi');
-      location.assign('./story.html');
       let getTitle = localStorage.getItem('madlibz-title');
       console.log(getTitle);
       let getStory = localStorage.getItem('madlibz-story');
