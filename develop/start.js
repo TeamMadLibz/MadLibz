@@ -85,6 +85,7 @@ const randomNameUrl = constructUrl(names);
         // Click event to generate a random word.
         $('.random-btn').click(randomWordBtn);
         
+        
         function randomWordBtn(){
             // This will get the value from the wordTypeField.
             const randomWordType = $(this).next('.word-type').html();
@@ -122,6 +123,7 @@ const randomNameUrl = constructUrl(names);
             // map the story array and merge with user input 
             // will need to figure out how to make this part asyncronous due to possible api timing issues once live
             const storyP$ = $('<p>');
+            const saveStoryBtn = $('<button>').attr('id','save-story').text('Save Story');
             storyText.map(function(phrase, index){
                 const wordSpan$ = $('<span>').text(userWords[index]);
                 if(userWords[index] === ''){  
@@ -129,6 +131,7 @@ const randomNameUrl = constructUrl(names);
                 }
                 storyP$.append(phrase);
                 storyP$.append(wordSpan$);
+                storyP$.append(saveStoryBtn);
             });
 
             // change story array to sting
@@ -144,9 +147,22 @@ const randomNameUrl = constructUrl(names);
 
         // event listener
         $('#story-btn').click(renderStory);
-
       // End ajax call
     });
+
+    $('#save-story').click(retrieveStory);
+    function retrieveStory () {
+      console.log('hi');
+      // location.assign('./story.html');
+      let getTitle = localStorage.getItem('madlibz-title');
+      console.log(getTitle);
+      let getStory = localStorage.getItem('madlibz-story');
+      let storyTitle = $('<h2>').text(getStory);
+      let story = $('<p>').text(getStory);
+
+      $('hero-body').append(storyTitle);
+      $('hero-body').append(story);
+    }
 
 
   
