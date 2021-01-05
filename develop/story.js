@@ -14,4 +14,4 @@ function renderSavedStories() {
 
 }
 
-renderSavedStories();
+$('#view-stories').click(renderSavedStories);
