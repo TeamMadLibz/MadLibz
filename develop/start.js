@@ -1,46 +1,80 @@
 $(document).ready(function renderPage() {
 
-  const NoWordFoundMessage = 'couldnt find the random word, fill it in yourself'
+  // Variable to display message to user that the random buttom failed to fetch a word
+  const NoWordFoundMessage = 'Oops, could not find a random word! Please pick your own.'
   // Arrays of possible words for each part of speech/input
-  const adjectives = ['brave', 'strong', 'bright', 'yellow', 'tall', 'ugly', 'painful', 'depressing', "aggressive", "agreeable", "calm", "delightful", "ambitious", "faithful", "eager", "elegant", "drab", "gentle", "happy", "lazy", "jealous", "mysterious", "gorgeous", "handsome", "magnificent", "plump", "thin", "thick", "unkempt", "jolly", "kind", "fierce", "grumpy", "embarassed", "small", "gigantic", "angry", "silly", "victorious", "polite", "scary", "fun"];
+  const adjectives = ['brave', 'strong', 'bright', 'yellow', 'tall', 'ugly', 'painful', 'depressing', "aggressive", "agreeable", "calm", "delightful", "ambitious",
+    "faithful", "eager", "elegant", "drab", "gentle", "happy", "lazy", "jealous", "mysterious", "gorgeous", "handsome", "magnificent", "plump", "thin",
+    "thick", "unkempt", "jolly", "kind", "fierce", "grumpy", "embarassed", "small", "gigantic", "angry", "silly", "victorious", "polite", "scary", "fun"];
 
-  const nouns = ['table', 'finger', 'pirate', 'chair', 'crown', 'man', 'mountain', 'building', 'country', 'airline', 'house', 'ocean', 'speaker', 'clock', 'pen', 'eyes', 'light', 'sun', 'suitcase', 'flowers', 'bed', 'movie', 'train', 'song', 'milk', 'rice', 'tablecloth', 'water', 'food', 'rain', 'sock', 'ship', 'hero', 'baby', 'people', 'history', 'software', 'problem', 'community', 'safety', 'thought', 'boyfriend', 'girlfriend', 'friend', 'army', 'camera', 'week', 'month', 'player', 'technology', 'news', 'department', 'audience'];
+  const nouns = ['table', 'finger', 'pirate', 'chair', 'crown', 'man', 'mountain', 'building', 'country', 'airline', 'house', 'ocean', 'speaker', 'clock', 'pen', 'eyes',
+    'light', 'sun', 'suitcase', 'flowers', 'bed', 'movie', 'train', 'song', 'milk', 'rice', 'tablecloth', 'water', 'food', 'rain', 'sock', 'ship', 'hero', 'baby', 'people',
+    'history', 'software', 'problem', 'community', 'safety', 'thought', 'boyfriend', 'girlfriend', 'friend', 'army', 'camera', 'week', 'month', 'player', 'technology', 'news',
+    'department', 'audience'];
 
-  const adverbs = ['lovely', 'boldy', 'cheerfully', 'deftly', 'courageously', 'fortunately', 'gracefully', 'gently', 'gleefully', 'honestly', 'devotedly', 'powerfully', 'justly', 'perfectly', 'politely', 'anxiously', 'badly', 'boastfully', 'poorly', 'obnoxiously', 'selfishly', 'warily', 'rudely', 'foolishly', 'hopelessly', 'always', 'eventually', 'rarely', 'seldom', 'usually', 'frequently', 'finally', 'never', 'sometimes', 'quickly', 'tediously', 'accidentally', 'crazily', 'dutifully', 'doubtfully', 'morally', 'madly', 'awkwardly', 'defiantly', 'deliberately', 'doubtfully', 'sharply', 'seriously', 'silently', 'technically', 'shakily'];
+  const adverbs = ['lovely', 'boldy', 'cheerfully', 'deftly', 'courageously', 'fortunately', 'gracefully', 'gently', 'gleefully', 'honestly', 'devotedly', 'powerfully', 'justly',
+    'perfectly', 'politely', 'anxiously', 'badly', 'boastfully', 'poorly', 'obnoxiously', 'selfishly', 'warily', 'rudely', 'foolishly', 'hopelessly', 'always', 'eventually', 'rarely',
+    'seldom', 'usually', 'frequently', 'finally', 'never', 'sometimes', 'quickly', 'tediously', 'accidentally', 'crazily', 'dutifully', 'doubtfully', 'morally', 'madly', 'awkwardly',
+    'defiantly', 'deliberately', 'doubtfully', 'sharply', 'seriously', 'silently', 'technically', 'shakily'];
 
-  const partOfBody = ['abdomen', 'adrenal gland', 'anus', 'arm', 'Adam\'s apple', 'appendix', 'artery', 'ankle', 'back', 'belly button', 'big toe', 'buttocks', 'brain', 'belly', 'bladder', 'body', 'breast', 'calf', 'cheek', 'chest', 'clavicle', 'chin', 'coccyx', 'diaphragm', 'ear', 'eyebrow', 'earlobe', 'elbow', 'eye', 'face', 'femur', 'finger', 'foot', 'fingernail', 'forehead', 'feet', 'groin', 'gums', 'hair', 'heart', 'hand', 'heel', 'head', 'hip', 'iris', 'kidney', 'knee', 'lip', 'leg', 'liver', 'lungs', 'mouth', 'muscle', 'nail', 'nostril', 'navel', 'nipple', 'neck', 'nose', 'palm', 'pupil', 'pinky', 'rectum', 'ribs', 'sacrum', 'skull', 'spinal cord', 'sternum', 'scalp', 'shin', 'skeleton', 'sole', 'spine', 'stomach', 'shoulder', 'skin', 'spleen', 'throat', 'toenail', 'tooth', 'teeth', 'thigh', 'tongue', 'toe', 'uvula', 'vein', 'waist', 'wrist'];
+  const partOfBody = ['abdomen', 'adrenal gland', 'anus', 'arm', 'Adam\'s apple', 'appendix', 'artery', 'ankle', 'back', 'belly button', 'big toe', 'buttocks', 'brain', 'belly',
+    'bladder', 'body', 'breast', 'calf', 'cheek', 'chest', 'clavicle', 'chin', 'coccyx', 'diaphragm', 'ear', 'eyebrow', 'earlobe', 'elbow', 'eye', 'face', 'femur', 'finger', 'foot',
+    'fingernail', 'forehead', 'feet', 'groin', 'gums', 'hair', 'heart', 'hand', 'heel', 'head', 'hip', 'iris', 'kidney', 'knee', 'lip', 'leg', 'liver', 'lungs', 'mouth', 'muscle',
+    'nail', 'nostril', 'navel', 'nipple', 'neck', 'nose', 'palm', 'pupil', 'pinky', 'rectum', 'ribs', 'sacrum', 'skull', 'spinal cord', 'sternum', 'scalp', 'shin', 'skeleton', 'sole',
+    'spine', 'stomach', 'shoulder', 'skin', 'spleen', 'throat', 'toenail', 'tooth', 'teeth', 'thigh', 'tongue', 'toe', 'uvula', 'vein', 'waist', 'wrist'];
 
-  const verbs = ["run", "kick", "travel", "dance", "walk", "paint", "write", "code", "draw", "smuggle", "steal", "kidnap", "think", "drool", "fight", "shoot", "yodle", "sing", "tickle", "create", "bounce", "jump", "seduce", "fly", "bamboozle", "trick", "mop", "wash", "flop", "talk", "splash", "mash"];
+  const verbs = ["run", "kick", "travel", "dance", "walk", "paint", "write", "code", "draw", "smuggle", "steal", "kidnap", "think", "drool", "fight", "shoot", "yodle", "sing",
+    "tickle", "create", "bounce", "jump", "seduce", "fly", "bamboozle", "trick", "mop", "wash", "flop", "talk", "splash", "mash"];
 
-  const foreignCountry = ["Ireland", "North Korea", "Nicaragua", "Argentina", "South Africa", "India", "Costa Rica", "Mexico", "Australia", "United Arab Emirates", "Thailand", "Somalia", "France", "Russia", "Norway", "Iceland", "China", "United Kingdom", "Canada", "Iran", "Palestine", "Estonia", "Slovenia", "Netherlands", "Belarus", "New Zeland", "Fiji", "Jamacia", "Cuba"];
+  const foreignCountry = ["Ireland", "North Korea", "Nicaragua", "Argentina", "South Africa", "India", "Costa Rica", "Mexico", "Australia", "United Arab Emirates", "Thailand",
+    "Somalia", "France", "Russia", "Norway", "Iceland", "China", "United Kingdom", "Canada", "Iran", "Palestine", "Estonia", "Slovenia", "Netherlands", "Belarus", "New Zeland",
+    "Fiji", "Jamacia", "Cuba", "Honduras", "Sweden", "Germany", "Finland", "Italy", "Greece", "Madagascar"];
 
-  const animals = ['kangaroo', 'wallaby', 'leopard', 'crocodile', 'alligator', 'swan', 'duck', 'tasmanian devil', 'hawk', 'eagle', 'falcon', 'lion', 'jackal', 'hyena', 'gecko', 'iguana', 'turtle', 'tortoise', 'tiger', 'panther', 'jaguar',
-    'cardinal', 'giraffe', 'elephant', 'hippo', 'emu', 'ostrich', 'bull', 'cow', 'ox', 'rhino', 'water buffalo', 'bison', 'dog', 'cat', 'lizard', 'hamster', 'rabbit', 'gerbil', 'racoon', 'jellyfish', 'salmon', 'manta ray', 'tuna', 'dolphin', 'great white shark', 'tiger shark', 'moray eel', 'walrus', 'sea lion', 'seal', 'condor', 'pelican', 'warthog', 'mongoose', 'cobra', 'salamander', 'deer', 'elk', 'moose', 'caribou', 'reindeer', 'bear', 'wolf', 'fox', 'coyote', 'gorilla', 'chimpanzee', 'orangutan', 'bonobo', 'baboon', 'lemur', 'zebra', 'gazelle', 'cougar', 'puma', 'frog', 'toad', 'tarantula', 'black widow', 'brown recluse', 'crab', 'lobster', 'shrimp', 'stingray', 'blue whale', 'orca', 'anaconda', 'python'];
+  const animals = ['kangaroo', 'wallaby', 'leopard', 'crocodile', 'alligator', 'swan', 'duck', 'tasmanian devil', 'hawk', 'eagle', 'falcon', 'lion', 'jackal', 'hyena', 'gecko',
+    'iguana', 'turtle', 'tortoise', 'tiger', 'panther', 'jaguar', 'cardinal', 'giraffe', 'elephant', 'hippo', 'emu', 'ostrich', 'bull', 'cow', 'ox', 'rhino', 'water buffalo', 'bison',
+    'dog', 'cat', 'lizard', 'hamster', 'rabbit', 'gerbil', 'racoon', 'jellyfish', 'salmon', 'manta ray', 'tuna', 'dolphin', 'great white shark', 'tiger shark', 'moray eel', 'walrus',
+    'sea lion', 'seal', 'condor', 'pelican', 'warthog', 'mongoose', 'cobra', 'salamander', 'deer', 'elk', 'moose', 'caribou', 'reindeer', 'bear', 'wolf', 'fox', 'coyote', 'gorilla',
+    'chimpanzee', 'orangutan', 'bonobo', 'baboon', 'lemur', 'zebra', 'gazelle', 'cougar', 'puma', 'frog', 'toad', 'tarantula', 'black widow', 'brown recluse', 'crab', 'lobster',
+    'shrimp', 'stingray', 'blue whale', 'orca', 'anaconda', 'python'];
 
-  const places = ['Dubai', 'Rishikesh', 'Nosara', 'jungle', 'here', 'there', 'everywhere', 'nowhere', 'your house', 'the garden', 'the park', 'backyard', 'church', 'temple', 'Hogwarts', 'Maine', 'New Castle', 'Amsterdam', 'the cabin', 'the woods', 'heaven', 'outer space', 'inner space', 'Detroit', 'Cancun', 'Neverland', 'colosseum', 'Rome', 'Mount Ida', 'Mount Hood', 'thrift store', 'bookshop', 'drycleaner', 'coffee shop', 'bar', 'deli', 'convenience store', 'gas station', 'grocery store', 'laboratory', 'hair salon', 'hardware store', 'florist', 'bank', 'music store', 'office', 'restaurant', 'lobby', 'room', 'kitchen'];
+  const places = ['Dubai', 'Rishikesh', 'Nosara', 'jungle', 'here', 'there', 'everywhere', 'nowhere', 'your house', 'the garden', 'the park', 'backyard', 'church', 'temple',
+    'Hogwarts', 'Maine', 'New Castle', 'Amsterdam', 'the cabin', 'the woods', 'heaven', 'outer space', 'inner space', 'Detroit', 'Cancun', 'Neverland', 'colosseum', 'Rome',
+    'Mount Ida', 'Mount Hood', 'thrift store', 'bookshop', 'drycleaner', 'coffee shop', 'bar', 'deli', 'convenience store', 'gas station', 'grocery store', 'laboratory', 'hair salon',
+    'hardware store', 'florist', 'bank', 'music store', 'office', 'restaurant', 'lobby', 'room', 'kitchen'];
 
-  const typesOfLiquids = ['water', 'soda', 'pop', 'soda pop', 'juice', 'alcohol', 'tea', 'coffee', 'milk', 'soymilk', 'liquid nitrogen', 'wine', 'cider', 'hard cider', 'beer', 'whisky', 'rum', 'gin', 'bourbon', 'vodka', 'almond milk', 'apple juice', 'orange juice', 'bleach', 'soap', 'hand sanitizer', 'coke', 'sprite', 'smoothie', 'milkshake', 'hot chocolate'];
+  const typesOfLiquids = ['water', 'soda', 'pop', 'soda pop', 'juice', 'alcohol', 'tea', 'coffee', 'milk', 'soymilk', 'liquid nitrogen', 'wine', 'cider', 'hard cider', 'beer',
+    'whisky', 'rum', 'gin', 'bourbon', 'vodka', 'almond milk', 'apple juice', 'orange juice', 'bleach', 'soap', 'hand sanitizer', 'coke', 'sprite', 'smoothie', 'milkshake',
+    'hot chocolate', 'poison'];
 
-  const ingVerbs = ["sleeping", "indoctrinating", "mapping", "pacing", "boxing", "racing", "smashing", "chasing", "crying", "laughing", "dropping", "working", "twerking", "swimming", "diving", "drowning", "skate-boarding", "snow-boarding", "thrashing", "liking", "biking", "hiking", "looking", "finding", "dining", "driving", "trying", "typing", "puking", "joking", "choking", "seeing", "being", "hating", "making", "taking", "faking", "shaking", "smirking", "jerking", "lurking", "staring", "sharing", "caring", "daring",];
+  const ingVerbs = ["sleeping", "indoctrinating", "mapping", "pacing", "boxing", "racing", "smashing", "chasing", "crying", "laughing", "dropping", "working", "twerking",
+    "swimming", "diving", "drowning", "skate-boarding", "snow-boarding", "thrashing", "liking", "biking", "hiking", "looking", "finding", "dining", "driving", "trying", "typing",
+    "puking", "joking", "choking", "seeing", "being", "hating", "making", "taking", "faking", "shaking", "smirking", "jerking", "lurking", "staring", "sharing", "caring", "daring",];
 
-  const clothing = ['kimono', 'robe', 'jeans', 'shirt', 't-shirt', 'dress shirt', 'dress', 'skirt', 'mini-skirt', 'pants', 'shorts', 'jacket', 'sweater', 'hoodie', 'parka', 'vest', 'capris', 'sun-dress', 'button-up shirt', 'button-down shirt', 'socks', 'shoes', 'boots', 'sandals', 'flip-flops', 'heels', 'wedges', 'slippers', 'flippers', 'bikini', 'swimsuit', 'tank-top', 'crop-top', 'goggles', 'watch', 'belt', 'smart-watch', 'gloves', 'scarf', 'bracelet', 'suit', 'gown', 'tuxedo', 'bullet-proof vest', 'armor', 'body-armor', 'gauntlet', 'helmet', 'hat', 'baseball hat', 'sombrero', 'cap', 'beanie', 'fedora'];
+  const clothing = ['kimono', 'robe', 'jeans', 'shirt', 't-shirt', 'dress shirt', 'dress', 'skirt', 'mini-skirt', 'pants', 'shorts', 'jacket', 'sweater', 'hoodie', 'parka',
+    'vest', 'capris', 'sun-dress', 'button-up shirt', 'button-down shirt', 'socks', 'shoes', 'boots', 'sandals', 'flip-flops', 'heels', 'wedges', 'slippers', 'flippers', 'bikini',
+    'swimsuit', 'tank-top', 'crop-top', 'goggles', 'watch', 'belt', 'smart-watch', 'gloves', 'scarf', 'bracelet', 'suit', 'gown', 'tuxedo', 'bullet-proof vest', 'armor', 'body-armor',
+    'gauntlet', 'helmet', 'hat', 'baseball hat', 'sombrero', 'cap', 'beanie', 'fedora'];
 
   const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
-  const names = ['Jayme', 'Jamie', 'Eric', 'Erik', 'Ray', 'Rai', 'Shawn', 'Sean', 'Alex', 'Aiden', 'Amy', 'Betty', 'Bobby', 'Beatrice', 'Charles', 'Cathy', 'Chris', 'Christine', 'Caleb', 'David', 'Danielle', 'Dakota', 'Edward', 'Edith', 'Elijah', 'Emma', 'Frank', 'Frances', 'Freya', 'George', 'Greg', 'Gabby', 'Henry', 'Haley', 'Hannah', 'Indiana', 'Isabel', 'Iris', 'Isaac', 'Jacob', 'Jake', 'James', 'Jess', 'Jaden', 'Kaden', 'Kane', 'Kayla', 'Ky', 'Leo', 'Lily', 'Lara', 'Maryus', 'Mabel', 'Mark', 'Mary', 'Matthew', 'Madelyn', 'Noah', 'Nathan', 'Nancy', 'Odin', 'Orlando', 'Orion', 'Oscar', 'Paul', 'Paula', 'Paige', 'Parker', 'Quentin', 'Quinn', 'Quincy', 'Rachel', 'Rae', 'Riley', 'Ryan', 'Sophia', 'Scarlett', 'Sam', 'Stella', 'Tyler', 'Theo', 'Thor', 'Toni', 'Tony', 'Trevor', 'Ulema', 'Ulga', 'Uda', 'Uma', 'Viktoria', 'Victor', 'Val', 'Valerie', 'William', 'Will', 'Weston', 'Wade', 'Walker', 'Xavier', 'Xavi', 'Yana', 'Yadira', 'Yvonne', 'Yvette', 'Zach', 'Zara', 'Zakiya'];
-
+  const names = ['Jayme', 'Jamie', 'Eric', 'Erik', 'Ray', 'Rai', 'Shawn', 'Sean', 'Alex', 'Aiden', 'Amy', 'Betty', 'Bobby', 'Beatrice', 'Charles', 'Cathy', 'Chris', 'Christine',
+    'Caleb', 'David', 'Danielle', 'Dakota', 'Edward', 'Edith', 'Elijah', 'Emma', 'Frank', 'Frances', 'Freya', 'George', 'Greg', 'Gabby', 'Henry', 'Haley', 'Hannah', 'Indiana',
+    'Isabel', 'Iris', 'Isaac', 'Jacob', 'Jake', 'James', 'Jess', 'Jaden', 'Kaden', 'Kane', 'Kayla', 'Ky', 'Leo', 'Lily', 'Lara', 'Maryus', 'Mabel', 'Mark', 'Mary', 'Matthew',
+    'Madelyn', 'Noah', 'Nathan', 'Nancy', 'Odin', 'Orlando', 'Orion', 'Oscar', 'Paul', 'Paula', 'Paige', 'Parker', 'Quentin', 'Quinn', 'Quincy', 'Rachel', 'Rae', 'Riley', 'Ryan',
+    'Sophia', 'Scarlett', 'Sam', 'Stella', 'Tyler', 'Theo', 'Thor', 'Toni', 'Tony', 'Trevor', 'Ulema', 'Ulga', 'Uda', 'Uma', 'Viktoria', 'Victor', 'Val', 'Valerie', 'William', 'Will',
+    'Weston', 'Wade', 'Walker', 'Xavier', 'Xavi', 'Yana', 'Yadira', 'Yvonne', 'Yvette', 'Zach', 'Zara', 'Zakiya'];
 
   const wd = {
     'name': names,
-    'verb ending in ing': ingVerbs, // check dash before ing
+    'verb ending in ing': ingVerbs, // Check dash before "ing"
     'verb': verbs,
     'noun': nouns,
-    'plural noun': nouns, // change to array of plural nouns
+    'plural noun': nouns, // Change to array of plural nouns
     'adjective': adjectives,
     'adverb': adverbs,
     'number': numbers,
-    'past tense verb': verbs, // change
-    'adjective ending in -est': adjectives, // change 
+    'past tense verb': verbs, // Change
+    'adjective ending in -est': adjectives, // Change 
     'article of clothing': clothing,
     'part of body': partOfBody,
     'part of the body': partOfBody,
@@ -51,26 +85,7 @@ $(document).ready(function renderPage() {
     'foreign country': foreignCountry,
   }
 
-  // Contruct Urls for all array types
-  // const randomAdjUrl = constructUrl(adjectives);
-  // const randomNounUrl = constructUrl(nouns);
-  // const randomAdvUrl = constructUrl(adverbs);
-  // const randomPobUrl = constructUrl(partOfBody);
-  // const randomVerbUrl = constructUrl(verbs);
-  // const randomForeignCountryUrl = constructUrl(foreignCountry);
-  // const randomAnimalUrl = constructUrl(animals);
-  // const randomPlacesUrl = constructUrl(places);
-  // const randomTypeOfLiquidUrl = constructUrl(typesOfLiquids);
-  // const randomIngVerbUrl = constructUrl(ingVerbs);
-  // const randomClothingUrl = constructUrl(clothing);
-  // const randomNumberUrl = constructUrl(numbers);
-  // const randomNameUrl = constructUrl(names);
-
-  // var adj = getSynFromAjax('adjective', randomAdjUrl);
-  // var noun = getSynFromAjax('noun', randomNounUrl);
-
-
-  // ajax call to madlibz api
+  // Ajax call to madlibz api
   $.ajax({
     url: 'https://madlibz.herokuapp.com/api/random?minlength=2'
   }).then(function renderUserEntry(result) {
@@ -100,7 +115,6 @@ $(document).ready(function renderPage() {
       const wordInputField = $('<input>').addClass('user-input-field input  is-rounded');
       let randomWordBtn = $('<button>').text('Random!').addClass('button m-4 is-rounded btn random-btn');
 
-
       // Append the word type, input and random button on the word-blanks div line 13.
       $('.word-blanks').append(randomWordBtn, wordTypeField, wordInputField);
     };
@@ -108,12 +122,11 @@ $(document).ready(function renderPage() {
     // Click event to generate a random word.
     $('.random-btn').click(randomWordBtn);
 
-
     function randomWordBtn() {
       // This will get the value from the wordTypeField.
       const randomWordType = $(this).next('.word-type').html();
 
-      // get the reference for the input field and pass it on to randomWordFunction; 
+      // Get the reference for the input field and pass it on to randomWordFunction; 
       const inputField$ = $(this).nextAll('.input')[0];
 
       console.log(inputField$);
@@ -143,11 +156,11 @@ $(document).ready(function renderPage() {
       }
       let randomWord;
       try {
-        // check if user is asking for special case word, and branch logic here. OPTION1
+        // Check if user is asking for special case word, and branch logic here. OPTION1
         const url = constructUrl(wd[wordForURL]);
         randomWord = await getSynFromAjax(wordTypeToGenerate, url, inputField$, isPastTense, isPlural);
       } catch (err) {
-        // if thresaurus couldnt find a word, try generation one yourself. 
+        // If thesaurus couldnt find a word, this prompts the message for the user to create their own 
         randomWord = NoWordFoundMessage;
         if (wordForURL === 'animal') {
           const random = Math.floor(Math.random() * (animals.length - 1) + 1);
@@ -171,11 +184,11 @@ $(document).ready(function renderPage() {
       // $(this).next('.user-input-field').text(randomWord);
     };
 
-    // user input stored here
+    // User input stored here
     let userWords = [];
     let userStory = [];
 
-    // render story on click with event listener
+    // Render story on click with event listener
     function renderStory() {
       // Add new class to container
       $('.container').addClass("blankPage");
@@ -183,15 +196,15 @@ $(document).ready(function renderPage() {
       $('.word-choice-title').hide()
       $('.word-blanks').hide();
       $('.story-btn').hide();
-      // store user words in array
+      // Store user words in array
       $('.user-input-field').each(function () {
         console.log('each user input val: ', $(this).val());
         const wordToPush = $(this).val();
         userWords.push(wordToPush);
       });
 
-      // map the story array and merge with user input 
-      // will need to figure out how to make this part asyncronous due to possible api timing issues once live
+      // Map the story array and merge with user input 
+      // Will need to figure out how to make this part asyncronous due to possible api timing issues once live
       const storyP$ = $('<p>').attr('id', 'story-container');
       const saveStoryBtn = $('<button>').attr('id', 'save-story').text('Save Story');
       const homeBtn = $('<button>').attr('id', 'home-btn').text('Home');
@@ -203,18 +216,15 @@ $(document).ready(function renderPage() {
         }
         storyP$.append(phrase);
         storyP$.append(wordSpan$);
-        // move these buttons to a different element;
+        // Move these buttons to a different element;
         storyP$.append(saveStoryBtn);
         storyP$.append(homeBtn);
       });
       saveStoryBtn.click(handleSaveStory);
-      // change story array to sting
+      // Change story array to sting
       userStory.toString();
 
-      //added local storage
-      // localStorage.setItem('madlibz-title', storyTitle);
-      // localStorage.setItem('madlibz-story', JSON.stringify($(storyP$).text()));
-      // append title and story
+      // Append title and story
       $('#storyTitle').text(storyTitle);
       $('#madlibzText').append(storyP$);
     };
@@ -256,11 +266,6 @@ $(document).ready(function renderPage() {
     $('.hero-body').append(story);
   }
 
-
-
-
-
-
   // Function to get Url based on the arrya we pass into it
   function constructUrl(array) {
     const randomNum = Math.floor(Math.random() * array.length - 1) + 1;
@@ -271,7 +276,7 @@ $(document).ready(function renderPage() {
 
   // Function for ajax call to get synonyms
   function getSynFromAjax(partOfSpeech, randomURL, inputField$, isPastTense, isPlural) {
-    //onsole.log(randomURL);
+    //Console.log(randomURL);
     return $.ajax({ url: randomURL }).then(function (response) {
       const wordResponse = response.find(function (entry) {
         console.log(partOfSpeech);
@@ -288,13 +293,10 @@ $(document).ready(function renderPage() {
       if (isPlural) {
         result = result + 's';
       }
-      // inputField$.value = result;
+      // InputField$.value = result;
       return result;
     });
   }
-
-
-
 
   // End documentReady
 });
