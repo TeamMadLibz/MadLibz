@@ -205,6 +205,8 @@ $(document).ready(function renderPage() {
 
       // Map the story array and merge with user input 
       // Will need to figure out how to make this part asyncronous due to possible api timing issues once live
+      const div$ = $('<div>').addClass('buttons');
+      $('.container').append(div$);
       const storyP$ = $('<p>').attr('id', 'story-container');
       const saveStoryBtn = $('<button>').attr('id', 'save-story').text('Save Story');
       const homeBtn = $('<button>').attr('id', 'home-btn').text('Home');
@@ -217,8 +219,8 @@ $(document).ready(function renderPage() {
         storyP$.append(phrase);
         storyP$.append(wordSpan$);
         // Move these buttons to a different element;
-        storyP$.append(saveStoryBtn);
-        storyP$.append(homeBtn);
+        div$.append(saveStoryBtn);
+        div$.append(homeBtn);
       });
       saveStoryBtn.click(handleSaveStory);
       // Change story array to sting
