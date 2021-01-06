@@ -26,5 +26,7 @@ $(".viewStories").on("click", function() {
     console.log(savedStory)
     var pTag = $("<p>").text(savedStory);   
     $("#savedRenderedStories").append(pTag);
+    $('#savedRenderedStories').addClass("blankPage");
+
 
 })
